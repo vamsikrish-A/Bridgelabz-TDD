@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class InvoiceServiceTest {
     @Test
     public void givenDistanceAndTime_ShouldReturnTotalFare() {
@@ -20,20 +23,17 @@ public class InvoiceServiceTest {
         Assertions.assertEquals(5, fare,0.0);
 
     }
-//    @Test
-//    public void shouldNowTakeInMultipleRide_CalculateAggregateTotal() {
-//        InvoiceService invoiceService= new InvoiceService();
-//        invoiceService.multipleRidesWithAggregateTotal();
-//    }
 
     @Test
-    public void givenMultipleRides_ShouldsReturnTotalFare() {
+    public void givenMultipleRides_ShouldReturnInvoiceSummary() {
         InvoiceService invoiceService = new InvoiceService();
         Ride[] rides = {new Ride(2.0, 5),
                 new Ride(0.1, 1)
         };
-        double fare = invoiceService.calculateFare(rides);
-        Assertions.assertEquals(30, fare,0.0);
-
+        InvoiceSummary summary = invoiceService.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assertions.assertEquals(expectedInvoiceSummary,summary);
     }
+
+    
 }
