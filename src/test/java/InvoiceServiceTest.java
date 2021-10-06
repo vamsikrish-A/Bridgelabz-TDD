@@ -35,5 +35,20 @@ public class InvoiceServiceTest {
         Assertions.assertEquals(expectedInvoiceSummary,summary);
     }
 
-    
+    @Test
+    public void getsTheListOfRides_UsingUserID() {
+        InvoiceService invoiceService = new InvoiceService();
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(0.1, 1)
+        };
+        InvoiceSummary summary = invoiceService.calculateFare(rides);
+        InvoiceSummary id = new InvoiceSummary(2, 30.0);
+        id.setUserId(1, summary);
+        Map<Integer, InvoiceSummary> userID = new HashMap<>();
+        for (Map.Entry<Integer, InvoiceSummary> integerInvoiceSummaryEntry : userID.entrySet()) {
+            integerInvoiceSummaryEntry.getValue();
+        }
+
+        Assertions.assertEquals(userID, id.getUserId());
+    }
 }

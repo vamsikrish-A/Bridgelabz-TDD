@@ -12,6 +12,15 @@ public class InvoiceSummary {
         this.totalFare = fare;
         this.averageFare = this.totalFare/ this.numberOfRides;
     }
+    Map<Integer, InvoiceSummary> userId = new HashMap<>();
+
+    public Map<Integer, InvoiceSummary> getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int id, InvoiceSummary summary) {
+        this.userId = userId;
+    }
 
 
     @Override
