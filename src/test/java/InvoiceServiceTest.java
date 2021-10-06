@@ -51,4 +51,20 @@ public class InvoiceServiceTest {
 
         Assertions.assertEquals(userID, id.getUserId());
     }
+    @Test
+    public void givesPremiumRates_ShouldReturnTotalFare() {
+        InvoiceService invoiceService = new InvoiceService();
+        double distance = 2.0;
+        int time = 5;
+        double premiumFare = invoiceService.calculatePremiumFare(distance, time);
+        Assertions.assertEquals(40, premiumFare,0.0);
+    }
+    @Test
+    public void givesPremiumRates_ShouldReturnMinimumFare() {
+        InvoiceService invoiceService = new InvoiceService();
+        double distance = 0.1;
+        int time = 2;
+        double premiumFare = invoiceService.calculatePremiumFare(distance, time);
+        Assertions.assertEquals(20, premiumFare,0.0);
+    }
 }
